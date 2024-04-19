@@ -17,8 +17,8 @@ import javax.servlet.http.HttpSession;
  * 前端控制器
  * </p>
  *
- * @author 虎哥
- * @since 2021-12-22
+ * @author moonl
+ * @since 2024-4-10
  */
 @Slf4j
 @RestController
@@ -35,9 +35,9 @@ public class UserController {
      * 发送手机验证码
      */
     @PostMapping("code")
-    public Result sendCode(@RequestParam("phone") String phone, HttpSession session) {
+    public Result sendCode(@RequestParam("phone") String phone) {
         // TODO 发送短信验证码并保存验证码
-        return Result.fail("功能未完成");
+        return userService.sendCode(phone);
     }
 
     /**
@@ -45,9 +45,9 @@ public class UserController {
      * @param loginForm 登录参数，包含手机号、验证码；或者手机号、密码
      */
     @PostMapping("/login")
-    public Result login(@RequestBody LoginFormDTO loginForm, HttpSession session){
+    public Result login(@RequestBody LoginFormDTO loginForm){
         // TODO 实现登录功能
-        return Result.fail("功能未完成");
+        return userService.login(loginForm);
     }
 
     /**
